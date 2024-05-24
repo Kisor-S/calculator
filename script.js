@@ -37,7 +37,20 @@ function operate(operator, num1, num2){
     }
 }
 
-console.log(add(2,3));
-console.log(subtract(2,3));
-console.log(multiply(2,3));
-console.log(divide(2,3));
+const numbersContainer = document.querySelector("#allNumbers");
+const text = document.querySelector("#textArea");
+// const  numbers = document.querySelectorAll("#number");
+
+numbersContainer.addEventListener("click", (event) => {
+    // if(event.target.tagName === 'BUTTON') {
+        // console.log();
+        text.innerHTML = event.target.innerText;
+    // }
+
+});
+
+
+// console.log(add(2,3));
+// console.log(subtract(2,3));
+// console.log(multiply(2,3));
+// console.log(divide(2,3));
