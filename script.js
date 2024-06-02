@@ -4,8 +4,7 @@ let operator = "";
 let flag = 0;
 let flag1 = 0;
 let flag2 = 0;
-let final =0;
-
+let final ='';
 
 function add(a, b){
     return a + b;
@@ -32,27 +31,36 @@ function operate(operator, num1, num2){
         return subtract(num1, num2)
     }
 
-    else if(operator == '*') {
+    else if(operator == 'x') {
        return multiply(num1, num2)
     }
 
     else if(operator == '/') {
-       return divide(num1, num2)
+        if (num2 == 0){
+            return "lmao";
+        }
+        else return divide(num1, num2)
     }
 
     else {
-        return final;
+        if(text.innerHTML !== 0){
+            return final;
+        }
     }
 }
 
 const numbersContainer = document.querySelector("#allNumbers");
 const text = document.querySelector("#textArea");
-text.innerHTML = '';
+text.innerHTML = 0;
 // const  numbers = document.querySelectorAll("#number");
 
 numbersContainer.addEventListener("click", (event) => {
-    
-        if(flag1 == 0){
+    if(event.target.innerText !== "."){
+        if(flag1 == 0 && text.innerHTML === '0'){
+            text.innerHTML = '';
+            text.innerHTML = text.innerHTML + event.target.innerText;
+        }
+        else if (flag1 == 0){
             text.innerHTML = text.innerHTML + event.target.innerText;
         }
         else {
@@ -60,12 +68,54 @@ numbersContainer.addEventListener("click", (event) => {
             flag1 = 0;
             text.innerHTML = text.innerHTML + event.target.innerText;
         }
+    }
 
+    else {
+        let containPeriod = text.innerHTML.match(/\./g);
+
+        if (containPeriod === null) {
+            if (flag1 == 0){
+                text.innerHTML = text.innerHTML + event.target.innerText;
+            }
+            else {
+                flag1 = 0;
+                text.innerHTML = text.innerHTML + event.target.innerText;
+            }
+        }
+
+        else if (flag1 == 1) {
+            flag1 = 0;
+            text.innerHTML = 0;
+            text.innerHTML = text.innerHTML + event.target.innerText;
+        }   
+    }
 });
+
+
+// const decimal = document.querySelector(".decimal");
+// decimal.addEventListener("click", (d) => {
+//     let containPeriod = text.innerHTML.match(/\./g);
+
+//     if (containPeriod === null) {
+//         if (flag1 == 0){
+//             text.innerHTML = text.innerHTML + d.target.innerText;
+//         }
+//         else {
+//             flag1 = 0;
+//             text.innerHTML = text.innerHTML + d.target.innerText;
+//         }
+//     }
+
+//     else if (flag1 == 1) {
+//         flag1 = 0;
+//         text.innerHTML = 0;
+//         text.innerHTML = text.innerHTML + d.target.innerText;
+//     }   
+// })
 
 const erase = document.querySelector("#clear");
 erase.addEventListener("click", () => {
-    text.innerHTML = '';
+    text.innerHTML = 0;
     firstNumber = 0;
     secondNumber = 0;
     operator = '';
@@ -75,42 +125,47 @@ erase.addEventListener("click", () => {
 
 const backSpace = document.querySelector("#backSpace");
 backSpace.addEventListener("click", () => {
-    if(flag2 == 0){
-        text.innerHTML = text.innerHTML.slice(0, -1);
-        firstNumber = Number(text.innerHTML);
-        final = Number(text.innerHTML);
+    if (operator !== "=") {
+        if(flag2 == 0){
+            text.innerHTML = text.innerHTML.slice(0, -1);
+            firstNumber = Number(text.innerHTML);
+            final = Number(text.innerHTML);
+        }
+        else {
+            text.innerHTML = text.innerHTML.slice(0, -1);
+            secondNumber = Number(text.innerHTML);
+        }
     }
-    else {
-        text.innerHTML = text.innerHTML.slice(0, -1);
-        secondNumber = Number(text.innerHTML);
-    }
-    
-})
+});
 
 
 
 const symbolsContainer = document.querySelector("#allSymbol");
 symbolsContainer.addEventListener("click", (e) => {
-    if(flag == 0){
-        firstNumber = Number(text.innerHTML);
-        operator = e.target.innerText;
-        flag = 1;
-        flag1 = 1;
-        flag2 = 1;
-        // text.innerHTML = 0;
-    }
+    // if(text.innerHTML != ''){
+        if(flag == 0 && e.target.innerText !== "="){
+            firstNumber = Number(text.innerHTML);
+            operator = e.target.innerText;
+            flag = 1;
+            flag1 = 1;
+            flag2 = 1;
+            decimalFlag = 1;
+            // text.innerHTML = 0;
+        }
 
-    else{
-        secondNumber = Number(text.innerHTML);
-        final = operate(operator, firstNumber, secondNumber);
-        operator = e.target.innerText;
-        firstNumber = final;
-        secondNumber = 0;
-        text.innerHTML = final;
-        flag1=1;
-        flag2 =1;
-        console.log(final);
-    }
+        else if (flag == 1){
+            secondNumber = Number(text.innerHTML);
+            final = operate(operator, firstNumber, secondNumber);
+            operator = e.target.innerText;
+            firstNumber = final;
+            secondNumber = 0;
+            text.innerHTML = final;
+            flag1=1;
+            flag2 =1;
+            decimalFlag = 1;
+            console.log(final);
+        }
+    //}
 });
 
 // console.log(operate('+', 2, 3));
