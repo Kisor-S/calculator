@@ -52,7 +52,6 @@ function operate(operator, num1, num2){
 const numbersContainer = document.querySelectorAll('.number');
 const text = document.querySelector("#textArea");
 text.innerHTML = 0;
-// const  numbers = document.querySelectorAll("#number");
 
 
 numbersContainer.forEach(element => {
@@ -94,28 +93,6 @@ numbersContainer.forEach(element => {
         }
     })
 });
-
-
-// const decimal = document.querySelector(".decimal");
-// decimal.addEventListener("click", (d) => {
-//     let containPeriod = text.innerHTML.match(/\./g);
-
-//     if (containPeriod === null) {
-//         if (flag1 == 0){
-//             text.innerHTML = text.innerHTML + d.target.innerText;
-//         }
-//         else {
-//             flag1 = 0;
-//             text.innerHTML = text.innerHTML + d.target.innerText;
-//         }
-//     }
-
-//     else if (flag1 == 1) {
-//         flag1 = 0;
-//         text.innerHTML = 0;
-//         text.innerHTML = text.innerHTML + d.target.innerText;
-//     }   
-// })
 
 const erase = document.querySelector("#clear");
 erase.addEventListener("click", () => {
@@ -170,18 +147,5 @@ symbolsContainer.forEach(element => {
             decimalFlag = 1;
             console.log(final);
         }
-    //}
     })
 });
-
-// console.log(operate('+', 2, 3));
-
-
-
-
-
-
-// console.log(add(2,3));
-// console.log(subtract(2,3));
-// console.log(multiply(2,3));
-// console.log(divide(2,3));
