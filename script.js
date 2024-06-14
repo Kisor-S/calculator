@@ -7,7 +7,7 @@ let flag2 = 0;
 let final ='';
 
 function add(a, b){
-    return a + b;
+    return (a + b);
 }
 
 function subtract(a, b){
@@ -19,7 +19,7 @@ function multiply(a, b){
 }
 
 function divide(a, b){
-    return a / b;
+    return (a / b);
 }
 
 function operate(operator, num1, num2){
@@ -31,15 +31,15 @@ function operate(operator, num1, num2){
         return subtract(num1, num2)
     }
 
-    else if(operator == 'x') {
+    else if(operator == '\u00d7') {
        return multiply(num1, num2)
     }
 
-    else if(operator == '/') {
+    else if(operator == '\u00f7') {
         if (num2 == 0){
             return "lmao";
         }
-        else return divide(num1, num2)
+        else return divide(num1, num2);
     }
 
     else {
@@ -49,46 +49,50 @@ function operate(operator, num1, num2){
     }
 }
 
-const numbersContainer = document.querySelector("#allNumbers");
+const numbersContainer = document.querySelectorAll('.number');
 const text = document.querySelector("#textArea");
 text.innerHTML = 0;
 // const  numbers = document.querySelectorAll("#number");
 
-numbersContainer.addEventListener("click", (event) => {
-    if(event.target.innerText !== "."){
-        if(flag1 == 0 && text.innerHTML === '0'){
-            text.innerHTML = '';
-            text.innerHTML = text.innerHTML + event.target.innerText;
-        }
-        else if (flag1 == 0){
-            text.innerHTML = text.innerHTML + event.target.innerText;
-        }
-        else {
-            text.innerHTML = '';
-            flag1 = 0;
-            text.innerHTML = text.innerHTML + event.target.innerText;
-        }
-    }
 
-    else {
-        let containPeriod = text.innerHTML.match(/\./g);
+numbersContainer.forEach(element => {
+    element.addEventListener("click", (event) => {
 
-        if (containPeriod === null) {
-            if (flag1 == 0){
+        if(event.target.innerText !== "."){
+            if(flag1 == 0 && text.innerHTML === '0'){
+                text.innerHTML = '';
+                text.innerHTML = text.innerHTML + event.target.innerText;
+            }
+            else if (flag1 == 0){
                 text.innerHTML = text.innerHTML + event.target.innerText;
             }
             else {
+                text.innerHTML = '';
                 flag1 = 0;
                 text.innerHTML = text.innerHTML + event.target.innerText;
             }
         }
 
-        else if (flag1 == 1) {
-            flag1 = 0;
-            text.innerHTML = 0;
-            text.innerHTML = text.innerHTML + event.target.innerText;
-        }   
-    }
+        else {
+            let containPeriod = text.innerHTML.match(/\./g);
+
+            if (containPeriod === null) {
+                if (flag1 == 0){
+                    text.innerHTML = text.innerHTML + event.target.innerText;
+                }
+                else {
+                    flag1 = 0;
+                    text.innerHTML = text.innerHTML + event.target.innerText;
+                }
+            }
+
+            else if (flag1 == 1) {
+                flag1 = 0;
+                text.innerHTML = 0;
+                text.innerHTML = text.innerHTML + event.target.innerText;
+            }   
+        }
+    })
 });
 
 
@@ -140,8 +144,9 @@ backSpace.addEventListener("click", () => {
 
 
 
-const symbolsContainer = document.querySelector("#allSymbol");
-symbolsContainer.addEventListener("click", (e) => {
+const symbolsContainer = document.querySelectorAll(".symbol");
+symbolsContainer.forEach(element => {
+    element.addEventListener("click", (e) => {
     // if(text.innerHTML != ''){
         if(flag == 0 && e.target.innerText !== "="){
             firstNumber = Number(text.innerHTML);
@@ -166,6 +171,7 @@ symbolsContainer.addEventListener("click", (e) => {
             console.log(final);
         }
     //}
+    })
 });
 
 // console.log(operate('+', 2, 3));

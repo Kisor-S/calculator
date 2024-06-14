@@ -7,31 +7,46 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="textArea">0</div>
-    <div id="allNumbers">
-      <button id="number" value="1">1</button>
-      <button id="number" value="2">2</button>
-      <button id="number" value="3">3</button>
-      <button id="number" value="4">4</button>
-      <button id="number" value="5">5</button>
-      <button id="number" value="6">6</button>
-      <button id="number" value="7">7</button>
-      <button id="number" value="8">8</button>
-      <button id="number" value="9">9</button>
-      <button id="number" value="0">0</button>
-      <button id="number" class="decimal" value=".">.</button>
-    </div>
+    <main id="calc">
+      <div id="textArea">0</div>
 
-    <div id="allSymbol">
-      <button id="symbol" value="+">+</button>
-      <button id="symbol" value="-">-</button>
-      <button id="symbol" value="*">x</button>
-      <button id="symbol" value="/">/</button>
-      <button id="symbol" value="=">=</button>
-    </div>
+      <div class="row1">
+        <button id="clear">AC</button>
+        <button id="backSpace">&#8678;</button>
+        <button id="divide" class="symbol" value="/">&divide;</button>
+      </div>
 
-    <button id="clear">AC</button>
-    <button id="backSpace">Del</button>
+      <div class="row2">
+        <button id="one" class="number" value="1" data-key="49">1</button>
+        <button id="two" class="number" value="2">2</button>
+        <button id="three" class="number" value="3">3</button>
+        <button id="multiply" class="symbol" value="*">&times;</button>
+      </div>
+
+      <div class="row3">
+        <button id="four" class="number" value="4">4</button>
+        <button id="five" class="number" value="5">5</button>
+        <button id="six" class="number" value="6">6</button>
+        <button id="minus" class="symbol" value="-">-</button>
+      </div>
+
+      <div class="row4">
+        <button id="seven" class="number" value="7">7</button>
+        <button id="eight" class="number" value="8">8</button>
+        <button id="nine" class="number" value="9">9</button>
+        <button id="plus" class="symbol" value="+">+</button>
+      </div>
+
+      <div class="row5">
+        <button id="zero" class="number" value="0">0</button>
+        <button id="period" class="number" class="decimal" value=".">.</button>
+        <button id="equals" class="symbol" value="=">=</button>
+      </div>
+    </main>
+
+    <div class="footer">
+      <p>Kishore &copy; Jun 2024</p>
+    </div>
 
     <script src="script.js"></script>
   </body>

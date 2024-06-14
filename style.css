@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100 vh;
+    margin : 10% auto;
+    background-color: rgb(122, 132, 110);
+}
+
+#calc {
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(148, 169, 58);
+    margin-bottom: 10px;
+}
+
+#textArea {
+    min-width : 200px;
+    height:70px;
+    padding: 0px 2px;
+    border : 2px solid black;
+    border-radius: 7px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    font-size: 45px;
+    font-weight: 520;
+    margin-bottom: 10px;
+    background-color: rgb(201, 193, 165);
+}
+
+.symbol, #clear, #backSpace{
+    width:50px;
+    height:40px;
+    margin: 4px;
+    background-color: rgb(145, 119, 51);
+    border: 1.2px solid black;
+    border-radius: 12px;
+    color: white;
+    font-size:x-large
+}
+
+#zero{
+    width: 112px;
+}
+
+#clear, #backSpace {
+    width : 81px;
+}
+
+.number {
+    width:50px;
+    height:40px;
+    margin: 4px;
+    background-color: rgb(233, 218, 150);
+    border: 1.2px solid black;
+    border-radius: 12px;
+    font-size:x-large
+}
+
+#clear:active, #backSpace:active {
+    border-color: white;
+}
+
+.symbol:focus {
+    background-color: black;
+}
+
+.number:active {
+    background-color: rgb(79, 77, 69);
+    color: white;
+    border-color: white;
+}
+
+.footer {
+    color: rgb(23, 23, 23);
+}
